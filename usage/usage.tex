@@ -1,0 +1,287 @@
+%\documentclass[a4paper,11pt]{article}
+
+%%%%%---------------------------Bibliotecas
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{etex}
+%%%%%---------------------------Bibliotecas
+
+\usepackage[round]{natbib}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage{amssymb,amsmath}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy} % colocar Capítulos, Seções, etc em minúsculo
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{epsfig}
+%\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{amsfonts}
+\usepackage{lineno}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{placeins}         %Pacote necessario para \FloatBarrier
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage[export]{adjustbox}
+%
+% \geometry{a4paper,left=3.25cm,right=3.25cm,top=3.5cm,bottom=3.5cm}
+
+\usepackage{blindtext}
+\usepackage{esint}
+\usepackage{float}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage{graphics}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage[vlined,ruled,portuguese]{algorithm2e}
+\SetKw{KwTo}{at\'e}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\usetikzlibrary{chains,shapes}
+\usetikzlibrary{matrix,arrows,fit}
+\usepackage{pgfplots}
+%\usepackage{tikz-qtree}
+%\usetikzlibrary{arrows.meta, shapes}
+\usepackage[american]{circuitikz}
+\usepackage{pgfplotstable, booktabs}
+\usepackage{filecontents}
+%\usepackage[utopia]{mathdesign}
+
+%\usepackage[brazil]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{amssymb,amsmath}
+%\usepackage{indentfirst}
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}
+%%\pagestyle{fancy} % colocar Capítulos, Seções, etc em minúsculo
+%\usepackage{lscape}
+%\usepackage{rotating}
+%\usepackage{epsfig}
+%\usepackage{subfigure}
+%\usepackage{amsmath,amsfonts}
+%\usepackage{amssymb, latexsym}
+%\usepackage{amsthm}
+%\usepackage{graphicx}
+%\usepackage{enumerate}
+%\usepackage{amsfonts}
+%\usepackage{lineno}
+%\usepackage{listings}
+%\usepackage{color}
+%\usepackage{placeins}         %Pacote necessario para \FloatBarrier
+%\usepackage{geometry}
+%\usepackage{fancyvrb}
+%\usepackage{fancybox}
+%\usepackage{hyperref}
+%\usepackage{tabularx}
+%
+%\geometry{a4paper,left=3.25cm,right=3.25cm,top=3.5cm,bottom=3.5cm}
+
+% %%%%%---------------------------Inicio das Configuracoes de Estilo, NAO ALTERAR
+
+\headheight 30mm      %
+\oddsidemargin 2.0mm  %
+\evensidemargin 2.0mm %
+\topmargin -45mm      %
+\textheight 245mm     %comprimento do texto
+\textwidth 180mm      %largura do texto
+\headwidth 180mm
+\hoffset -10.0mm
+
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\fancyhf{} % deletar configuração atual do cabeçalho e rodapé
+  \fancyhead[LE,RO]{{\em \thepage{}  de \pageref{LastPage}}}
+%   \fancyhead[LO]{\small\it\rightmark}
+  \fancyhead[RE]{\small\it\leftmark}
+  \renewcommand{\headrulewidth}{0.5pt}
+  \renewcommand{\footrulewidth}{0.pt}
+  \addtolength{\headheight}{0.5pt} % cria um espaço para linha
+\fancypagestyle{plain}{
+    \fancyhead{} % exibir cabeçalho e rodapé
+    \renewcommand{\headrulewidth}{0pt} % linha
+} 
+
+\newcommand{\HRule}{\rule{\linewidth}{0.6mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.2mm}}
+
+\makeatletter
+\def\s@btitle{\relax}
+\def\subtitle#1{\gdef\s@btitle{#1}}
+\def\@maketitle{%
+  \newpage
+  \null
+%   \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    { \LARGE \@title \par}%
+                \if\s@btitle\relax
+                \else\typeout{[subtitle]}%
+                        %\vskip 5em
+                        \begin{large}%
+                                {\em \s@btitle}%
+                                \par
+                        \end{large}%
+                \fi
+%     \vskip 1.em%
+%   \lineskip .5em%
+   {\large
+%      \lineskip 0.5em%
+      \vskip -1.em%
+      \begin{tabular}[t]{c}%
+        \em \@author
+      \end{tabular}\par}%
+%    \vskip 0.25em%
+%    {\large \em \@date}%
+    
+   \HRule
+   \end{center}
+%   \par
+%   \vskip 0.5em
+  }
+
+\makeatother 
+
+\everymath{\displaystyle}
+
+%%%%%---------------------------Fim das Configuracoes de Estilo
+\title{{\LARGE \textbf{PSIDE -- Parallel Software for Implicit Differential Equations}}\\ 
+{Basic usage in GNU/Linux}
+ }%\\
+% M\'etodos Num\'ericos -- Exerc\'icios Selecionados}
+% \subtitle{
+ %\vspace{0.1in} \large
+% Exerc\'icios Selecionados}
+% \author{Autor: Diego T. Volpatto \\ e-mail: volpatto@lncc.br}
+%\fancyhead[CO]{\small\it Uso básico do FINEL}
+%\fancyhead[CE]{\small\it Diego T. Volpatto}
+
+\date{\today}
+
+%%%%%---------------------------Definicoes adicionais
+\newtheoremstyle{comm}% name
+  {11pt}%         Space above, empty = `usual value'
+  {}%         Space below
+  {\selectfont}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {:}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {\Large\underline{\thmname{#1}\thmnumber{ #2}\thmnote{#3}}}%         Thm head spec
+
+\theoremstyle{comm}
+\newtheorem{comunicacao}{Comunica\c c\~ao}[]
+
+%\setlength\parindent{0pt}
+\sloppy
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tblr,
+  %language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\fontsize{10}{12}\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  %keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+
+\begin{document}
+%\setcounter{page}{1} 
+\maketitle
+
+%Para as instruções de uso, será considerado que o usuário se encontra sempre no diretório do FINEL.
+
+\section{Forewords}
+
+This document provides a short usage instructions of compiling and running a test problem with PSIDE. The suitable operational system where tests were performed is GNU/Linux. Below I display the test environmental configurations.
+
+\begin{table}[h]
+\centering
+{\fontsize{10}{12}\selectfont
+\begin{tabular}{l | r} \toprule \toprule
+Processor 	&  Intel\textsuperscript{\tiny{\textregistered}} Core\textsuperscript{\tiny{TM}} i5-7200U CPU @ 2.50GHz $\times$ 4  \\[0.3em] 
+RAM &  7,7 GiB DDR3 \\[0.3em] 
+Operational System (OS) &  Ubuntu 16.04 LTS \\[0.3em]
+OS type &  64-bits \\
+\bottomrule \bottomrule
+\end{tabular}}
+\caption{Computer configurations.}\label{pcconfig}
+\end{table}
+
+The source files employed here were altered compared with the original ones. The directory \texttt{original} contains the latter, while \texttt{src} contains the ones which are under improvements, such as implementing modern parallelization techniques. The actual change concern is updating OpenMP directives. Futher improvements will be carry out soon.
+
+\section{Compiling}
+
+The user can choose between some options. Currently, the available compilers are:
+\begin{itemize}
+\item GNU Compiler \texttt{gfortran}. Compilation can be achieved with the following script execution:
+
+\begin{Verbatim}[frame=single]
+./compile_gfortran.sh test_problem.f
+\end{Verbatim}
+for actual source files and
+\begin{Verbatim}[frame=single]
+./compile_original_gfortran.sh test_problem.f
+\end{Verbatim}
+for original PSIDE source file implementation. The \texttt{test\_problem.f} denotes the Fortran 77 file which the problem is described (ex.: \texttt{hires.f}).
+
+\item Intel Compiler \texttt{ifort}: Analogously we have
+
+\begin{Verbatim}[frame=single]
+./compile_intel.sh test_problem.f Nt
+\end{Verbatim}
+for actual source files and
+\begin{Verbatim}[frame=single]
+./compile_original_intel.sh test_problem.f Nt
+\end{Verbatim}
+for the original source files. Here, \texttt{Nt} denotes the number of OpenMP threads that will be setted up as environmental variable definition. This argument is optional. If not provided, the compilation will be carried out as default. Otherwise, auto-parallelization will be employed by \texttt{ifort} by means of \texttt{-parallel} compiler option.
+
+\end{itemize}
+
+A simple usage example is
+\begin{Verbatim}[frame=single]
+./compile_intel.sh problems/Beam/beam.f 4
+\end{Verbatim}
+
+The output obtained was
+\lstinputlisting[breaklines]{output.txt}
+
+\section{Running}
+
+Running PSIDE is straightfoward due to gathering of test problem to the compiled solver is achieved by compilation script described in the previous section. Therefore, running PSIDE consists in executing the following command
+\begin{Verbatim}[frame=single]
+./dotest
+\end{Verbatim}
+
+\textbf{Remark:} The tolerances reading during run-time were suppressed. This modification were employed aiming obtaining a more clear time execution record, suitable to realization of performances comparative studies. The values attributed are $10^{-10}$ to both relative and absolute errors.
+
+\end{document}

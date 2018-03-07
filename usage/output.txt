@@ -1,0 +1,20 @@
+Compiler version check:
++++ Version:
+
+Intel(R) Fortran Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 18.0.1.163 Build 20171018
+Copyright (C) 1985-2017 Intel Corporation.  All rights reserved.
+
++++ Status: OK
+
+Clearing binaries:
++++ Status: OK
+Compiling modules:
++++ Number of threads: 4
++++ Initializing...
+	ifort -c -parallel ../src/pside.f
+	ifort -c -parallel ../src/psidea.f
+	ifort -c -parallel ../src/report.f
+	ifort -c -parallel ../src/psided.f
++++ Linking...
+	ifort -parallel -o ../dotest ../problems/Beam/beam.f psided.o pside.o psidea.o report.o
++++ Status: OK
