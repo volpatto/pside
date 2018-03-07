@@ -9,4 +9,4 @@ Futher I intend to improve PSIDE with new parallelism resources.
 
 Diego T. Volpatto
 
-email: volpatto@lncc.br
+Email: volpatto@lncc.br
