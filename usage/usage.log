@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  7 MAR 2018 13:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  7 MAR 2018 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1925,7 +1925,7 @@ xmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/publ
 ic/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095
 .pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/tex
 mf/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on usage.pdf (2 pages, 242385 bytes).
+Output written on usage.pdf (2 pages, 242389 bytes).
 PDF statistics:
  125 PDF objects out of 1000 (max. 8388607)
  105 compressed objects within 2 object streams
