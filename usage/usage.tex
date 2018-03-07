@@ -237,7 +237,7 @@ OS type &  64-bits \\
 \caption{Computer configurations.}\label{pcconfig}
 \end{table}
 
-The source files employed here were altered compared with the original ones. The directory \texttt{original} contains the latter, while \texttt{src} contains the ones which are under improvements, such as implementing modern parallelization techniques. The current changes concern in updating OpenMP directives. Futher improvements will be carry out soon.
+The source files employed here were altered compared with the original ones. The directory \texttt{original} contains the latter, while \texttt{src} contains the ones which are under improvements, such as implementing modern parallelization techniques. The current changes concern in updating OpenMP directives. Futher improvements will be carry out soon. The present state only adds new compilers optimization flags.
 
 \section{Compiling}
 
@@ -254,22 +254,22 @@ for actual source files and
 \end{Verbatim}
 for original PSIDE source file implementation. The \texttt{test\_problem.f} denotes the Fortran 77 file which the problem is described (ex.: \texttt{hires.f}).
 
-\item Intel Compiler \texttt{ifort}: Analogously we have
+\item Intel Compiler \texttt{ifort} or PGI Compiler \texttt{pgfortran} Analogously we have
 
 \begin{Verbatim}[frame=single]
-./compile_intel.sh test_problem.f Nt
+./compile_###.sh test_problem.f flag
 \end{Verbatim}
 for actual source files and
 \begin{Verbatim}[frame=single]
-./compile_original_intel.sh test_problem.f Nt
+./compile_original_###.sh test_problem.f flag
 \end{Verbatim}
-for the original source files. Here, \texttt{Nt} denotes the number of OpenMP threads that will be setted up as environmental variable definition. This argument is optional. If not provided, the compilation will be carried out as default. Otherwise, auto-parallelization will be employed by \texttt{ifort} by means of \texttt{-parallel} compiler option.
+for the original source files. Here, \texttt{\#\#\#} can be \texttt{intel} or \texttt{pgi} and \texttt{flag} denotes the sign of compiler optimization tools. If the user wants to use compiler's optimization, just have to place \texttt{1} where is \texttt{flag}. This argument is optional. If not provided, the compilation will be carried out as default.
 
 \end{itemize}
 
 A simple usage example is
 \begin{Verbatim}[frame=single]
-./compile_intel.sh problems/Beam/beam.f 4
+./compile_intel.sh problems/Beam/beam.f 1
 \end{Verbatim}
 
 The output obtained was
@@ -279,8 +279,12 @@ The output obtained was
 
 Running PSIDE is straightforward due to gathering of test problem to the compiled solver is achieved by compilation script described in the previous section. Therefore, running PSIDE consists in executing the following command
 \begin{Verbatim}[frame=single]
-./dotest
+./run_pside.sh
 \end{Verbatim}
+
+This script accepts a positive integer argument as 
+\texttt{OMP\_NUM\_THREADS} 
+setting up environmental variable manually, but this improvement is currently under development.
 
 \textbf{Remark:} The tolerances reading during run-time were suppressed. This modification were employed aiming obtaining a more clear time execution record, suitable to realization of performances comparative studies. The values attributed are $10^{-10}$ to both relative and absolute errors.
 

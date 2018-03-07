@@ -3,15 +3,15 @@
 # Brief description:                                          #
 # This script compile and link PSIDE source codes with ifort  #
 # compiler. User can employ 2 using modes:                    # 
-#   (i) Auto-parallel region: In this case, user provides as  #
-#       second arg the numbers of OMP threads;                #
+#   (i) Auto-parallel region: User must sign with 1 to        #
+#       generate parallel regions within compilation;         #
 #   (ii) Regular: ifort standard compliling and linking. No   #
 #        additional args                                      #
 # Summarizing, the use cases is:                              #
-#   ./compile_intel.sh test_problem Nt                        #
+#   ./compile_intel.sh test_problem N                         #
 # where test_problem is the fortran source file which descri- #
-# bes the problem to be solved by PSIDE and Nt means the num- #
-# of OMP threads, if user wants to employ auto-parallel mode. #
+# bes the problem to be solved by PSIDE and N  means the flag,# 
+# if user wants to employ auto-parallel mode.                 #
 # This last arg can be ommited.                               #
 #                                                             #
 # Author: Diego T. Volpatto                                   #
@@ -62,9 +62,7 @@ if [ -z "$2" ]; then
     comando="ifort -o ../dotest ../$1 psided.o pside.o psidea.o report.o"
     eval $comando; echo -e "\t$comando"
     echo "+++ Status: OK"
-else
-    export OMP_NUM_THREADS=$2
-    echo +++ Number of threads: $OMP_NUM_THREADS
+elif [ "$2" -eq 1 ]; then
     # Compiling modules
     echo "+++ Initializing..."
     comando="ifort -c -parallel ../src/pside.f"; eval $comando; echo -e "\t$comando"
@@ -76,5 +74,8 @@ else
     comando="ifort -parallel -o ../dotest ../$1 psided.o pside.o psidea.o report.o"
     eval $comando; echo -e "\t$comando"
     echo "+++ Status: OK"
+else
+    echo "Error: The compiling mode was not supplied"
+    exit 1
 fi
 
